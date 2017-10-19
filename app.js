@@ -20,7 +20,7 @@ function onReady() {
   // attach the checkbox to the li
   newLi.appendChild(checkbox);
 
-  var remov = document.createElement('input');
+  const remov = document.createElement('input');
   remov.type = "button";
   newLi.appendChild(remov);
   remov.value = "Delete this To-Do!";
@@ -31,10 +31,11 @@ function onReady() {
   //empty the input
   newToDoText.value = '';
 
-  });
   remov.addEventListener('click', event => {
-  remov.parentNode.parentNode.removeChild(remov.parentNode)();
+  remov.parentNode.parentNode.removeChild(newLi);
   });
+  });
+
  }
 
 window.onload = function() {

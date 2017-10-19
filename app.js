@@ -2,7 +2,6 @@ function onReady() {
   const addToDoForm = document.getElementById('addToDoForm');
   const newToDoText = document.getElementById('newToDoText');
   const toDoList = document.getElementById('toDoList');
-  const remov = document.getElementById('remov');
   addToDoForm.addEventListener('submit', event => {
   event.preventDefault();
   let title = newToDoText.value;
@@ -21,18 +20,22 @@ function onReady() {
   // attach the checkbox to the li
   newLi.appendChild(checkbox);
 
+  const remov = document.createElement('input');
+  remov.type = "button";
+  newLi.appendChild(remov);
+  remov.value = "Delete this To-Do!";
+
   // attach the li to the ul
   toDoList.appendChild(newLi);
 
   //empty the input
   newToDoText.value = '';
 
-  });
   remov.addEventListener('click', event => {
-  const listItems = document.getElementsByTagName('li');
-  const inputs = document.getElementsByTagName('inputs');
-  toDoList.removeChild(listItems.inputs.checked == true);
+  remov.parentNode.parentNode.removeChild(newLi);
   });
+  });
+
  }
 
 window.onload = function() {

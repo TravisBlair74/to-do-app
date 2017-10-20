@@ -1,42 +1,36 @@
 function onReady() {
   const toDos = [];
   const addToDoForm = document.getElementById('addToDoForm');
-  const remov = document.getElementById('remov');
-  function deleteToDos() {
-
-// Need Code //
-
-  }
   function createNewToDo() {
     const newToDoText = document.getElementById('newToDoText');
-      if (!newToDoText) { return }
-      toDos.push({
+    if (!newToDoText) { return }
+    toDos.push({
       title: newToDoText.value,
       complete: false
     });
     newToDoText.value = '';
     renderTheUI(toDos);
-  }
+}
   function renderTheUI(toDos) {
     const todoList = document.getElementById('toDoList');
     toDoList.textContent = '';
     toDos.forEach(function(toDo) {
-    const newLi = document.createElement('li');
-    const checkbox = document.createElement('input');
-    checkbox.type = "checkbox";
-    newLi.textContent = toDo.title;
-    todoList.appendChild(newLi);
-    newLi.appendChild(checkbox);
-   });
+      const newLi = document.createElement('li');
+      const checkbox = document.createElement('input');
+      checkbox.type = "checkbox";
+      newLi.textContent = toDo.title;
+      const remov = document.createElement('input');
+      remov.type = "reset";
+      remov.value = "Delete this To-Do!";
+      todoList.appendChild(newLi);
+      newLi.appendChild(checkbox);
+      newLi.appendChild(remov);
+    });
   }
   addToDoForm.addEventListener('submit', event => {
   event.preventDefault();
   createNewToDo();
-  });
-  remov.addEventListener('click', event => {
-  event.preventDefault();
-  deleteToDos();
-  });
+});
   renderTheUI(toDos);
 }
 

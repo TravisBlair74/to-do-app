@@ -1,13 +1,9 @@
 function onReady() {
-  const toDos = [];
+  let toDos = [];
   const addToDoForm = document.getElementById('addToDoForm');
 
-  function deleteToDo (vary) {
-  for (let i=0;i<toDos.length;i++) {
-  if (toDos[i].title==vary) {
-    toDos.splice(i,1);
-   }
-  }
+  function deleteToDo (title) {
+  toDos = toDos.filter(toDo => toDo.title !== title);
   renderTheUI(toDos);
   }
 
@@ -37,7 +33,7 @@ function onReady() {
       newLi.appendChild(checkbox);
       newLi.appendChild(remov);
       remov.addEventListener('click', event => {
-        deleteToDo(remov.parentNode.textcontent);
+        deleteToDo(toDo.title);
       });
     });
   }
